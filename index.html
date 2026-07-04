@@ -1,919 +1,558 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="Renante Morales Jr, Software Engineer, PHP, Laravel, React, Portfolio" />
-  <meta name="description" content="Renante Morales Jr. - Software Engineer with 7+ years of experience in full-stack web development, systems migration, and QA/test automation." />
-  <meta name="author" content="Renante Morales Jr." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>Renante Morales Jr. | Software Engineer</title>
+<meta name="description" content="Renante Morales Jr. — Software Engineer with 7+ years of experience in full-stack web development, systems migration, and QA/test automation. PHP (Laravel), React, PostgreSQL, MySQL, Playwright." />
+<meta name="keywords" content="Renante Morales Jr, Software Engineer, PHP, Laravel, React, PostgreSQL, Playwright, Cebu, Portfolio" />
+<meta name="author" content="Renante Morales Jr." />
 
-  <title>Renante Morales Jr. | Software Engineer</title>
+<!-- Open Graph -->
+<meta property="og:title" content="Renante Morales Jr. | Software Engineer" />
+<meta property="og:description" content="7+ years across full-stack web development, systems migration, and QA/test automation." />
+<meta property="og:type" content="website" />
 
-  <!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+<!-- Favicon: inline SVG, no external file needed -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230B1220'/%3E%3Ctext x='50' y='68' font-size='54' font-family='monospace' font-weight='700' fill='%23F2A65A' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
 
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="images/eportfolioV1.png"/>
-
-</head>
 <style>
-    .mr-2 {
-        margin-right: 25.5rem !important;
-        margin-left: 5.5rem !important;
+  :root{
+    --bg: #0B1220;
+    --bg-soft: #0F1626;
+    --surface: #141C2E;
+    --surface-2: #1B2438;
+    --border: #263048;
+    --text: #E7ECF3;
+    --text-muted: #8B95A7;
+    --accent: #F2A65A;
+    --accent-2: #4FD1C5;
+    --danger: #E8735F;
+    --radius: 14px;
+    --max: 1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', system-ui, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0 0 .5em 0;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+  section{padding:96px 0;}
+  section + section{border-top:1px solid var(--border);}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--accent);
+    font-size:.85rem;
+    letter-spacing:.04em;
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{content:"//"; color:var(--text-muted);}
+  .section-title{font-size:clamp(1.6rem, 3vw, 2.2rem); margin-bottom:8px;}
+  .section-sub{color:var(--text-muted); max-width:640px; margin-bottom:48px;}
+
+  /* Skip link for accessibility */
+  .skip-link{
+    position:absolute; left:-999px; top:auto;
+    background:var(--accent); color:#0B1220; padding:10px 16px; border-radius:8px; z-index:200;
+  }
+  .skip-link:focus{ left:24px; top:24px; }
+
+  /* Nav */
+  header.site-nav{
+    position:fixed; top:0; left:0; width:100%; z-index:100;
+    background:rgba(11,18,32,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:var(--max); margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{font-family:'JetBrains Mono', monospace; font-weight:600; font-size:1.05rem;}
+  .brand span{color:var(--accent);}
+  nav.links{display:flex; gap:28px;}
+  nav.links a{
+    font-size:.92rem; color:var(--text-muted); font-weight:500;
+    transition:color .2s;
+  }
+  nav.links a:hover, nav.links a:focus-visible{color:var(--text);}
+  .nav-toggle{
+    display:none; background:none; border:1px solid var(--border); border-radius:8px;
+    color:var(--text); width:40px; height:40px; cursor:pointer; align-items:center; justify-content:center;
+  }
+  @media (max-width:760px){
+    nav.links{
+      position:fixed; top:65px; right:0; height:calc(100vh - 65px); width:min(280px,80vw);
+      background:var(--bg-soft); border-left:1px solid var(--border);
+      flex-direction:column; padding:32px 24px; gap:22px;
+      transform:translateX(100%); transition:transform .25s ease;
     }
-    .logo-img {
-        max-width: 150px;
-        height: auto;
-    }
-    .header_section {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: #6c4a3f;
-            transition: transform 0.3s ease-out;
-            opacity: .9;
-        }
-    .header_hidden {
-        transform: translateY(-90%);
-    }
-    .slider_section {
-        padding-top: 150px; 
-    }
+    nav.links.open{transform:translateX(0);}
+    .nav-toggle{display:flex;}
+  }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:10px; font-weight:600; font-size:.95rem;
+    border:1px solid transparent; cursor:pointer; transition:transform .15s, background .2s, border-color .2s;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--accent); color:#1A1305;}
+  .btn-ghost{background:transparent; border-color:var(--border); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent);}
+
+  /* Hero */
+  .hero{padding-top:170px; padding-bottom:100px; border-top:none;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;}
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{font-size:clamp(2.1rem, 5vw, 3.4rem);}
+  .hero .role{color:var(--accent-2); font-family:'JetBrains Mono',monospace; font-size:1.05rem; margin-bottom:20px;}
+  .hero p.lead{color:var(--text-muted); font-size:1.05rem; max-width:52ch; margin-bottom:32px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+
+  /* Terminal mock */
+  .terminal{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    overflow:hidden; box-shadow:0 20px 60px -20px rgba(0,0,0,.6);
+  }
+  .terminal-bar{
+    display:flex; align-items:center; gap:8px; padding:12px 16px;
+    background:var(--surface-2); border-bottom:1px solid var(--border);
+  }
+  .dot{width:10px; height:10px; border-radius:50%;}
+  .dot.r{background:#E8735F;} .dot.y{background:#F2C14E;} .dot.g{background:#4FD1C5;}
+  .terminal-title{margin-left:8px; color:var(--text-muted); font-size:.8rem; font-family:'JetBrains Mono',monospace;}
+  .terminal-body{padding:22px 20px; font-family:'JetBrains Mono',monospace; font-size:.86rem;}
+  .terminal-body .line{margin-bottom:10px; white-space:pre-wrap;}
+  .terminal-body .prompt{color:var(--accent-2);}
+  .terminal-body .out{color:var(--text-muted);}
+  .cursor{display:inline-block; width:7px; height:14px; background:var(--accent); animation:blink 1s steps(1) infinite; vertical-align:middle;}
+  @keyframes blink{50%{opacity:0;}}
+  @media (prefers-reduced-motion: reduce){ .cursor{animation:none;} }
+
+  /* About */
+  .about-grid{display:grid; grid-template-columns:1.3fr .9fr; gap:48px;}
+  @media (max-width:820px){ .about-grid{grid-template-columns:1fr;} }
+  .fact-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:18px 20px; margin-bottom:14px;
+  }
+  .fact-card .k{font-family:'JetBrains Mono',monospace; color:var(--accent); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px;}
+  .fact-card .v{color:var(--text); font-size:.98rem;}
+
+  /* Skills */
+  .skill-group{margin-bottom:34px;}
+  .skill-group h4{
+    font-family:'JetBrains Mono',monospace; font-size:.85rem; color:var(--text-muted);
+    text-transform:uppercase; letter-spacing:.06em; margin-bottom:16px; font-weight:600;
+  }
+  .chip-row{display:flex; flex-wrap:wrap; gap:10px;}
+  .chip{
+    padding:8px 14px; border-radius:999px; background:var(--surface); border:1px solid var(--border);
+    font-size:.88rem; color:var(--text);
+  }
+
+  /* Experience timeline */
+  .timeline{position:relative; padding-left:28px; border-left:2px solid var(--border);}
+  .tl-item{position:relative; margin-bottom:48px;}
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:-34px; top:4px; width:12px; height:12px; border-radius:50%;
+    background:var(--accent); border:3px solid var(--bg);
+    box-shadow:0 0 0 2px var(--border);
+  }
+  .tl-date{font-family:'JetBrains Mono',monospace; color:var(--accent-2); font-size:.82rem; margin-bottom:6px;}
+  .tl-role{font-size:1.15rem; margin-bottom:2px;}
+  .tl-company{color:var(--text-muted); font-size:.92rem; margin-bottom:14px;}
+  .tl-item ul{margin:0; padding-left:20px; color:var(--text-muted); font-size:.94rem;}
+  .tl-item li{margin-bottom:8px;}
+  .tl-item li::marker{color:var(--accent);}
+
+  /* Projects */
+  .project-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:20px;}
+  .project-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:22px; display:flex; flex-direction:column; gap:10px; transition:border-color .2s, transform .2s;
+  }
+  .project-card:hover{border-color:var(--accent); transform:translateY(-3px);}
+  .project-card h4{font-size:1.02rem;}
+  .project-card p{color:var(--text-muted); font-size:.88rem; margin:0; flex:1;}
+  .project-link{display:inline-flex; align-items:center; gap:6px; font-size:.85rem; color:var(--accent-2); font-weight:600;}
+
+  /* Education */
+  .edu-list{display:flex; flex-direction:column; gap:18px;}
+  .edu-item{
+    display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px;
+  }
+  .edu-item .school{font-size:1.02rem; margin-bottom:2px;}
+  .edu-item .degree{color:var(--text-muted); font-size:.9rem;}
+  .edu-item .date{font-family:'JetBrains Mono',monospace; color:var(--accent-2); font-size:.85rem; white-space:nowrap;}
+
+  /* Languages */
+  .lang-row{display:flex; gap:12px; flex-wrap:wrap;}
+
+  /* Contact */
+  .contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:36px;}
+  .contact-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:22px; display:flex; align-items:center; gap:14px; transition:border-color .2s, transform .2s;
+  }
+  .contact-card:hover{border-color:var(--accent-2); transform:translateY(-2px);}
+  .icon-badge{
+    width:42px; height:42px; border-radius:10px; background:var(--surface-2);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--accent);
+  }
+  .contact-card .k{font-size:.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.05em;}
+  .contact-card .v{font-size:.94rem; font-weight:600; word-break:break-word;}
+
+  footer{padding:36px 0; text-align:center; color:var(--text-muted); font-size:.85rem;}
+  footer .mono{color:var(--text-muted);}
+
+  ::selection{background:var(--accent); color:#1A1305;}
 </style>
+</head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 
-  <div class="hero_area">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="#">
-            <img src="images/header.png" alt="Logo" class="logo-img mr-2">
-            <!-- <span>
-               Renante Morales Jr.
-            </span> -->
-          </a>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="s-1"> </span>
-            <span class="s-2"> </span>
-            <span class="s-3"> </span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
-              <ul class="navbar-nav  ">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#aboutmeLink"> About me</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#skillsLink"> Skills </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#workLink"> Work Experience </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#contactLink">Contact</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-    <!-- slider section -->
-    <section class=" slider_section ">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6 ">
-                  <div class="detail_box">
-                    <h1>
-                      <small>a.k.a</small> Dambie
-                    </h1>
-                    <p>
-                      Software Engineer with 7+ years of experience across full-stack web development, systems migration, and QA/test automation. Skilled in PHP (Laravel), React, PostgreSQL, and MySQL, with hands-on experience leading legacy-to-modern system migrations and building production software for cooperative and enterprise clients.
-                    </p>
-                    <div class="btn-box">
-                      <a href="#contactLink" class="btn-1">
-                        Contact Me
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-1.png" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="carousel-item ">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6 ">
-                  <div class="detail_box">
-                    <h1>
-                      Objective
-                    </h1>
-                    <p>
-                      Strong background in test automation (Playwright), static analysis, and CI tooling, with growing experience in AI-assisted development workflows. Dedicated to expanding my knowledge of emerging IT trends and eager to embrace new challenges for
-                      ongoing professional development.
-                    </p>
-                    <div class="btn-box">
-                      <a href="#contactLink" class="btn-1">
-                        Contact Me
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-1.png" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel_btn-container">
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </section>
-    <!-- end slider section -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">renante<span>.</span>dev</a>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </div>
+</header>
 
-  <!-- work section -->
-  <section class="work_section layout_padding"  id="workLink">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          Work <small>Experience</small>
-        </h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="img-box">
-            <img src="images/work.png" alt="">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail_container">
-            <div class="box b-1">
-              <div class="top-box">
-                <div class="icon-box">
-                  <img src="images/work-codywebdev.png" alt="">
-                </div>
-                <h5>
-                  Cody Web Development <br>
-                  <small style="font-size: small;">Software Engineer - Systems Development / QA / System Migration | June 2024 - Present</small>
-                </h5>
-              </div>
-              <div class="bottom-box">
-                <p style="text-align: justify; text-justify: inter-word;font-size: x-small;">
-                  - Migrated the Ethna platform from legacy PHP to a modernized Laravel codebase, upgrading from PHP 8.3 to PHP 8.5 <br>
-                  - Led database migration from PostgreSQL 15 to PostgreSQL 17 as part of the YAMAHA account modernization <br>
-                  - Managed the PDM system migration from KSystem to Spiral <br>
-                  - Authored test cases and specification documents; executed integration and monkey testing, and performed QA sign-off across releases <br>
-                  - Built automated regression test suites using Playwright, integrated with .husky pre-commit hooks and PHPStan static analysis <br>
-                  - Contributed AWS-based pull requests and worked with Ivanti/GSA for change and access management <br>
-                  - Developed front-end features for the TNET/HIS project using React, JS DevExtreme, and Tailwind CSS <br>
-                  - Managed project tasks in Asana and automated internal workflows using Google Sheets Apps Script <br>
-                  - Containerized services with Docker and adopted AI-assisted coding tools (Cursor, Windsurf, Antigravity, Expo Go) to improve development speed <br>
-                </p>
-              </div>
-            </div>
-
-            <div class="box b-1">
-              <div class="top-box">
-                <div class="icon-box">
-                  <img src="images/work-coredev.png" alt="">
-                </div>
-                <h5>
-                  coreDev Solutions Inc. <br>
-                  <small style="font-size: small;">Software Developer - Web Development / Hardware Distributor / Service Provider | May 2019 - April 2024</small>
-                </h5>
-              </div>
-              <div class="bottom-box">
-                <p style="text-align: justify; text-justify: inter-word;font-size: x-small;">
-                  Developed 5 production systems serving cooperative organizations nationwide; <br>
-                  &ensp; a. E-Services Portal that provides members/clients’
-                  the access to monitor their accounts and send loan
-                  applications online securely at their most convenient
-                  time and place. <br>
-                  &ensp; b. Online Membership System that allows clients to fill
-                  out application forms, attend webinars and submit
-                  documents online via the Online Membership System. <br>
-                  &ensp; c. Coop Wallet allows you to check, transfer, save and
-                  withdraw your funds. <br>
-                  &ensp; d. Online Payment Gateway that allows
-                  members/clients to enjoy their quality time by letting
-                  them pay online with our Online Payment Gateway and
-                  increase your collection efficiency. <br>
-                  &ensp; e. Orange Pay Plus (HRIS) that complete ease on
-                  managing employee info and payroll computation;
-                  convenient employee access to their info and payslip;
-                  and many other very helpful features. <br>
-                  - Provide assistance to software implementors and clients
-                  regarding any concerns involved in the project <br>
-                  - Perform other tasks directly related to the project. <br>
-                </p>
-              </div>
-            </div>
-
-            <div class="box b-1">
-              <div class="top-box">
-                <div class="icon-box">
-                  <img src="images/work-itcore.png" alt="">
-                </div>
-                <h5>
-                  ITCore Solutions Incorporated <br>
-                  <small style="font-size: small;">Programmer Trainee | May 2018 - February 2019</small>
-                </h5>
-              </div>
-              <div class="bottom-box">
-                <p style="text-align: justify; text-justify: inter-word;font-size: x-small;">
-                  &ensp; - Develop a Hotel Management System for Training output.
-                </p>
-              </div>
-            </div>
-            
-          </div>
+<main id="main">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">whoami</div>
+        <h1>Renante Morales Jr.<br>a.k.a. Dambie</h1>
+        <div class="role">Software Engineer — Full-Stack &amp; QA Automation</div>
+        <p class="lead">
+          7+ years across full-stack web development, systems migration, and QA/test automation.
+          Skilled in PHP (Laravel), React, PostgreSQL, and MySQL — with hands-on experience leading
+          legacy-to-modern system migrations and building production software for cooperative and
+          enterprise clients.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <a href="https://moralesrenantejr.github.io/" class="btn btn-ghost" target="_blank" rel="noopener">View GitHub Pages</a>
         </div>
       </div>
-    </div>
-  </section>
-  <!--  -->
-  <section class="work_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          Educational <small>Background</small>
-        </h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail_container">
-            <div class="box b-1">
-              <div class="top-box">
-                <div class="icon-box">
-                  <img src="images/school - uc.png" alt="">
-                </div>
-                <h5>
-                  University Of Cebu <br>
-                  <small style="font-size: small;">Bachelor's Degree, Information Technology | March 2019</small>
-                </h5>
-              </div>
-              <div class="bottom-box">
-                <p style="text-align: justify; text-justify: inter-word;font-size: x-small;">
-                  &ensp;  Major: Information Technology <br>
-                  &ensp;  Field of Study: Computer Science/Information Technology
-                </p>
-              </div>
-            </div>
-            <div class="box b-1">
-              <div class="top-box">
-                <div class="icon-box">
-                  <img src="images/school - cchs.png" alt="">
-                </div>
-                <h5>
-                  City Central High School <br>
-                  <small style="font-size: small;">High School Diploma | Class Valedictorian | March 2015</small>
-                </h5>
-              </div>
-            </div>
-            <div class="box b-1">
-              <div class="top-box">
-                <div class="icon-box">
-                  <img src="images/school - kes.png" alt="">
-                </div>
-                <h5>
-                  Kabunga-an Elementary School <br>
-                  <small style="font-size: small;">Elementary School Diploma | Honor Student | March 2011</small>
-                </h5>
-              </div>
-            </div>
-          </div>
+      <div class="terminal" aria-hidden="true">
+        <div class="terminal-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="terminal-title">dambie@portfolio: ~</span>
         </div>
-        <div class="col-md-6">
-          <div class="img-box">
-            <img src="images/school.png" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--  -->
-  <!-- end work section -->
-
-  <!-- about section -->
-
-  <section class="about_section"  id="aboutmeLink">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="img-box">
-            <img src="images/about me.png" alt="">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h2>
-                About Me
-              </h2>
-            </div>
-            <p>
-              Hi! I'm Renante G. Morales Jr., a Software Engineer with 7+ years of experience across full-stack web development, systems migration, and QA/test automation.
-              I graduated from the University of Cebu with a Bachelor of Science in Information Technology and was Class Valedictorian of City Central High School in 2015.
-              I'm skilled in PHP (Laravel, Lumen), React, PostgreSQL, and MySQL, with hands-on experience leading legacy-to-modern system migrations and building production
-              software for cooperative and enterprise clients. I also bring a strong background in test automation (Playwright), static analysis, and CI tooling, along with
-              growing experience in AI-assisted development workflows using tools like Cursor, Windsurf, and Antigravity.
-            </p>
-          </div>
+        <div class="terminal-body">
+          <div class="line"><span class="prompt">$</span> cat profile.json</div>
+          <div class="line out">{
+  "role": "Software Engineer",
+  "location": "Cebu City, PH",
+  "experience": "7+ years",
+  "focus": ["PHP/Laravel", "React", "PostgreSQL", "QA Automation"],
+  "status": "open to opportunities"
+}</div>
+          <div class="line"><span class="prompt">$</span> <span class="cursor"></span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- end about section -->
-
-  <!-- skills section -->
-  <section class="service_section layout_padding" id="skillsLink">
-    <div class="container-fluid">
-      <div class="heading_container">
-        <h2>
-          Skills
-        </h2>
-        <p>
-          "Every skill you acquire doubles your odds of success."
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow">about</div>
+        <h2 class="section-title">A bit about me</h2>
+        <p style="color:var(--text-muted); max-width:60ch;">
+          I'm Renante G. Morales Jr., a Software Engineer with 7+ years of experience across full-stack
+          web development, systems migration, and QA/test automation. I graduated from the University
+          of Cebu with a Bachelor of Science in Information Technology and was Class Valedictorian of
+          City Central High School in 2015. I'm skilled in PHP (Laravel, Lumen), React, PostgreSQL, and
+          MySQL, with hands-on experience leading legacy-to-modern system migrations and building
+          production software for cooperative and enterprise clients. I also bring a strong background
+          in test automation (Playwright), static analysis, and CI tooling, along with growing
+          experience in AI-assisted development workflows using tools like Cursor, Windsurf, and
+          Antigravity.
         </p>
       </div>
-
-      <div class="service_container">
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - html.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              HTML
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - css.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              CSS
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - bootstrap.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              BOOTSTRAP
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - js.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              JAVASCRIPT
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - jquery.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              JQUERY
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - php.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              PHP
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - laravel.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              LARAVEL
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - lumen.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              LUMEN
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - react.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              REACT
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - tailwind.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              TAILWIND CSS
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - mysql.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              MYSQL
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - postgresql.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              POSTGRESQL
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - playwright.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              PLAYWRIGHT / QA AUTOMATION
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - phpstan.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              PHPSTAN
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - docker.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              DOCKER
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - aws.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              AWS <i style="font-size: xx-small;color: black;">*Basic </i>
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - github.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              GITHUB
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - git.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              GIT
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - gitlab.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              GITLAB
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - c.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              C <i style="font-size: xx-small;color: black;">*Basic </i>
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - csharp.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              C# <i style="font-size: xx-small;color: black;">*Basic </i>
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - cplusplus.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              C++ <i style="font-size: xx-small;color: black;">*Basic </i>
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - java.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              JAVA <i style="font-size: xx-small;color: black;">*Basic </i>
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - photoshop.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              PHOTOSHOP <i style="font-size: xx-small;color: black;">*Basic </i>
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - web.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              WEB DEVELOPMENT
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - android.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              ANDROID DEVELOPMENT <i style="font-size: xx-small;color: black;">*Basic </i>
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - leader.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              LEADING A TEAM
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - devextreme.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              DEVEXTREME
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - asana.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              ASANA
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - google-apps-script.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              GOOGLE APPS SCRIPT
-            </small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/skills - ai-dev.png" alt="">
-          </div>
-          <div class="detail-box">
-            <small>
-              AI-ASSISTED DEV (CURSOR, WINDSURF, ANTIGRAVITY)
-            </small>
-          </div>
-        </div>
+      <div>
+        <div class="fact-card"><div class="k">Location</div><div class="v">Cebu City, Philippines</div></div>
+        <div class="fact-card"><div class="k">Experience</div><div class="v">7+ years, full-stack &amp; QA</div></div>
+        <div class="fact-card"><div class="k">Currently</div><div class="v">Software Engineer @ Cody Web Development</div></div>
+        <div class="fact-card"><div class="k">Languages spoken</div><div class="v">Filipino, English, Cebuano, Japanese (Nihongo)</div></div>
       </div>
     </div>
   </section>
-  <!-- end SKILLS section -->
-  <!-- team section -->
-  <br><br>
-  <section class="team_section layout_padding2-bottom">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          Involved in several projects, including...
-        </h2>
-        <!-- <p>
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p> -->
-      </div>
-    </div>
-    <div class="team_container">
-      <div class="box b-1">
-        <div class="img-box">
-          <img src="images/output1.png" alt="">
-        </div>
-        <div class="detail-box">
-          <h5>
-            Orange Pay Plus (HRIS) <br>
-            <!-- <small>HTML | Laravel-Lumen | PHP | CSS | BOOTSTRAP</small> -->
-          </h5>
-          <div class="social_box">
-            <a href="https://coredev.orangepayplus.com/">
-              <img src="images/link.png" alt="">
-            </a>
-          </div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="eyebrow">skills</div>
+      <h2 class="section-title">Core Skills</h2>
+      <p class="section-sub">"Every skill you acquire doubles your odds of success."</p>
+
+      <div class="skill-group">
+        <h4>Languages &amp; Frameworks</h4>
+        <div class="chip-row">
+          <span class="chip">PHP (Laravel)</span><span class="chip">PHP (Lumen)</span><span class="chip">JavaScript</span>
+          <span class="chip">HTML/CSS</span><span class="chip">React</span><span class="chip">DevExtreme</span>
+          <span class="chip">Tailwind CSS</span><span class="chip">jQuery</span>
         </div>
       </div>
-      <div class="box b-2">
-        <div class="img-box">
-          <img src="images/output2.png" alt="">
-        </div>
-        <div class="detail-box">
-          <h5>
-            E-Services
-          </h5>
-          <div class="social_box">
-            <a href="https://membership.omsmpc.com/">
-              <img src="images/link.png" alt="">
-            </a>
-          </div>
+      <div class="skill-group">
+        <h4>Databases</h4>
+        <div class="chip-row">
+          <span class="chip">MySQL</span><span class="chip">PostgreSQL (v15–v17)</span>
         </div>
       </div>
-      <div class="box b-3">
-        <div class="img-box">
-          <img src="images/output3.png" alt="">
-        </div>
-        <div class="detail-box">
-          <h5>
-            Online Membership Application
-          </h5>
-          <div class="social_box">
-            <a href="https://membership.omsmpc.com/">
-              <img src="images/link.png" alt="">
-            </a>
-          </div>
+      <div class="skill-group">
+        <h4>Testing &amp; QA</h4>
+        <div class="chip-row">
+          <span class="chip">Playwright Automation</span><span class="chip">Test Case Design &amp; Execution</span>
+          <span class="chip">Integration Testing</span><span class="chip">Monkey Testing</span>
+          <span class="chip">PHPStan Static Analysis</span><span class="chip">Specification Documentation</span>
         </div>
       </div>
-      <div class="box b-4">
-        <div class="img-box">
-          <img src="images/output4.png" alt="">
-        </div>
-        <div class="detail-box">
-          <h5>
-            SEAMCO Web Portal
-          </h5>
-          <div class="social_box">
-            <a href="https://seamco.ph/webportal/">
-              <img src="images/link.png" alt="">
-            </a>
-          </div>
+      <div class="skill-group">
+        <h4>DevOps &amp; Tools</h4>
+        <div class="chip-row">
+          <span class="chip">Docker</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">GitLab</span>
+          <span class="chip">AWS (basic)</span><span class="chip">Husky</span><span class="chip">Ivanti / GSA</span>
+          <span class="chip">Asana</span><span class="chip">Google Apps Script</span>
         </div>
       </div>
-      <div class="box b-5">
-        <div class="img-box">
-          <img src="images/output5.png" alt="">
+      <div class="skill-group">
+        <h4>AI-Assisted Development</h4>
+        <div class="chip-row">
+          <span class="chip">Cursor</span><span class="chip">Windsurf</span><span class="chip">Antigravity</span><span class="chip">Expo Go</span>
         </div>
-        <div class="detail-box">
-          <h5>
-            XUCCCO Web Portal
-          </h5>
-          <div class="social_box">
-            <a href="https://webportal.xuccco.ph/">
-              <img src="images/link.png" alt="">
-            </a>
-          </div>
+      </div>
+      <div class="skill-group">
+        <h4>Other</h4>
+        <div class="chip-row">
+          <span class="chip">Microsoft Office</span><span class="chip">C (basic)</span><span class="chip">C++ (basic)</span>
+          <span class="chip">C# (basic)</span><span class="chip">Java (basic)</span><span class="chip">Android Development (basic)</span>
+          <span class="chip">Adobe Photoshop (basic)</span><span class="chip">Leading a Team</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- end team section -->
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="eyebrow">experience</div>
+      <h2 class="section-title">Work Experience</h2>
+      <p class="section-sub">A timeline of where I've built, migrated, and shipped software.</p>
 
-  <div class="footer_bg">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">June 2024 — Present</div>
+          <div class="tl-role">Software Engineer — Systems Development / QA / System Migration</div>
+          <div class="tl-company">Cody Web Development</div>
+          <ul>
+            <li>Migrated the Ethna platform from legacy PHP to a modernized Laravel codebase, upgrading from PHP 8.3 to PHP 8.5</li>
+            <li>Led database migration from PostgreSQL 15 to PostgreSQL 17 as part of the YAMAHA account modernization</li>
+            <li>Managed the PDM system migration from KSystem to Spiral</li>
+            <li>Authored test cases and specification documents; executed integration and monkey testing, and performed QA sign-off across releases</li>
+            <li>Built automated regression test suites using Playwright, integrated with .husky pre-commit hooks and PHPStan static analysis</li>
+            <li>Contributed AWS-based pull requests and worked with Ivanti/GSA for change and access management</li>
+            <li>Developed front-end features for the TNET/HIS project using React, JS DevExtreme, and Tailwind CSS</li>
+            <li>Managed project tasks in Asana and automated internal workflows using Google Sheets Apps Script</li>
+            <li>Containerized services with Docker and adopted AI-assisted coding tools (Cursor, Windsurf, Antigravity, Expo Go) to improve development speed</li>
+          </ul>
+        </div>
 
-    <!-- contact section -->
-    <section class="contact_section layout_padding" id="contactLink">
-      <div class="container">
-        <div class="heading_container">
-          <h2>
-            Let's <small>Connect!</small>
-          </h2>
-          <p>
-            Have a project in mind or just want to say hello? I'd love to hear from you! Feel free to drop me a message using the form below, and I'll get back to you as soon as possible. Whether it's discussing a potential collaboration, asking a question, or simply sharing ideas, I'm here and ready to chat.
-          </p>
+        <div class="tl-item">
+          <div class="tl-date">May 2019 — April 2024</div>
+          <div class="tl-role">Software Developer — Web Development / Hardware Distributor / Service Provider</div>
+          <div class="tl-company">coreDev Solutions Inc.</div>
+          <ul>
+            <li>Developed 5 production systems serving cooperative organizations nationwide, including an E-Services Portal, Online Membership System, Coop Wallet, Online Payment Gateway, and Orange Pay Plus (HRIS)</li>
+            <li>Built the E-Services Portal enabling members to securely monitor accounts and submit loan applications online</li>
+            <li>Developed the Online Membership System, allowing clients to complete applications, attend webinars, and submit documents digitally</li>
+            <li>Built Coop Wallet, a digital wallet enabling fund transfers, savings, and withdrawals for cooperative members</li>
+            <li>Implemented an Online Payment Gateway that increased collection efficiency by enabling online payments</li>
+            <li>Developed Orange Pay Plus (HRIS), a payroll and employee self-service platform</li>
+            <li>Provided technical support to software implementors and clients throughout project rollouts</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">May 2018 — February 2019</div>
+          <div class="tl-role">Programmer Trainee — IT/Computer, Software Development</div>
+          <div class="tl-company">ITCore Solutions Incorporated</div>
+          <ul>
+            <li>Developed a Hotel Management System as part of technical training</li>
+          </ul>
         </div>
       </div>
-    </section>
-    <!-- end contact section -->
+    </div>
+  </section>
 
-    <!-- info section -->
-    <section class="info_section layout_padding2">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="info_logo">
-              <h3>
-                It's me, Dambie!
-              </h3>
-              <p>
-                Looking forward to connecting with you!
-              </p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="info_links">
-              <h4>
-                BASIC LINKS
-              </h4>
-              <ul class="  ">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#aboutmeLink"> About me</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#skillsLink"> Skills </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#workLink"> Work Experience </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#contactLink">Contact</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="info_contact">
-              <h4>
-                CONTACT DETAILS
-              </h4>
-              <a href="tel:+639664138365">
-                <div class="img-box">
-                  <img src="images/telephone-white.png" width="12px" alt="">
-                </div>
-                <p>
-                  09664138365
-                </p>
-              </a>
-              <a href="mailto:morales.renante.jr@gmail.com">
-                <div class="img-box">
-                  <img src="images/envelope-white.png" width="18px" alt="">
-                </div>
-                <p>
-                  morales.renante.jr@gmail.com
-                </p>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="info_form ">
-              <h4>
-                Other Contacts!
-              </h4>
-              <div class="social_box">
-                <!-- <a href="">
-                  <img src="images/info-fb.png" alt="">
-                </a>
-                <a href="">
-                  <img src="images/info-twitter.png" alt="">
-                </a> -->
-                <a href="https://www.linkedin.com/in/renzgmorales/">
-                  <img src="images/info-linkedin.png" alt="">
-                </a>
-                <a href="https://moralesrenantejr.github.io/">
-                  <img src="images/info-link.png" alt="">
-                </a>
-                <!-- <a href="">
-                  <img src="images/info-youtube.png" alt="">
-                </a> -->
-              </div>
-            </div>
-          </div>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="eyebrow">projects</div>
+      <h2 class="section-title">Selected Projects</h2>
+      <p class="section-sub">Production systems built for cooperative and enterprise clients.</p>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <h4>Orange Pay Plus (HRIS)</h4>
+          <p>Payroll and employee self-service platform with payslip access and payroll computation.</p>
+          <a class="project-link" href="https://coredev.orangepayplus.com/" target="_blank" rel="noopener">Visit site →</a>
+        </div>
+        <div class="project-card">
+          <h4>E-Services Portal</h4>
+          <p>Lets members securely monitor accounts and submit loan applications online.</p>
+          <a class="project-link" href="https://membership.omsmpc.com/" target="_blank" rel="noopener">Visit site →</a>
+        </div>
+        <div class="project-card">
+          <h4>Online Membership Application</h4>
+          <p>Digital application flow for forms, webinars, and document submission.</p>
+          <a class="project-link" href="https://membership.omsmpc.com/" target="_blank" rel="noopener">Visit site →</a>
+        </div>
+        <div class="project-card">
+          <h4>SEAMCO Web Portal</h4>
+          <p>Cooperative-facing web portal for member services.</p>
+          <a class="project-link" href="https://seamco.ph/webportal/" target="_blank" rel="noopener">Visit site →</a>
+        </div>
+        <div class="project-card">
+          <h4>XUCCCO Web Portal</h4>
+          <p>Cooperative-facing web portal for member services.</p>
+          <a class="project-link" href="https://webportal.xuccco.ph/" target="_blank" rel="noopener">Visit site →</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- end info_section -->
-
-
-    <!-- footer section -->
-    <section class="container-fluid footer_section">
-      <div class="container">
-        <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-         <small>Renante G. Morales Jr.</small>
-        </p>
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="eyebrow">education</div>
+      <h2 class="section-title">Educational Background</h2>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div>
+            <div class="school">University of Cebu</div>
+            <div class="degree">Bachelor's Degree, Information Technology (Computer Science/Information Technology)</div>
+          </div>
+          <div class="date">March 2019</div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="school">City Central High School</div>
+            <div class="degree">High School Diploma — Class Valedictorian</div>
+          </div>
+          <div class="date">March 2015</div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="school">Kabunga-an Elementary School</div>
+            <div class="degree">Elementary School Diploma — Honor Student</div>
+          </div>
+          <div class="date">March 2011</div>
+        </div>
       </div>
-    </section>
-    <!-- footer section -->
 
+      <div style="margin-top:44px;">
+        <div class="eyebrow">languages</div>
+        <div class="lang-row">
+          <span class="chip">Filipino</span><span class="chip">English</span><span class="chip">Cebuano</span><span class="chip">Japanese (Nihongo)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="eyebrow">contact</div>
+      <h2 class="section-title">Let's Connect!</h2>
+      <p class="section-sub">
+        Have a project in mind or an opportunity to discuss? Feel free to reach out through
+        any of the channels below — I'll get back to you as soon as possible.
+      </p>
+
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:morales.renante.jr@gmail.com">
+          <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <div><div class="k">Email</div><div class="v">morales.renante.jr@gmail.com</div></div>
+        </a>
+        <a class="contact-card" href="tel:+639664138365">
+          <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="k">Phone</div><div class="v">0966 413 8365</div></div>
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/in/renzgmorales/" target="_blank" rel="noopener">
+          <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="k">LinkedIn</div><div class="v">/in/renzgmorales</div></div>
+        </a>
+        <a class="contact-card" href="https://moralesrenantejr.github.io/" target="_blank" rel="noopener">
+          <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20z"/></svg></div>
+          <div><div class="k">Portfolio</div><div class="v">moralesrenantejr.github.io</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">© <span id="displayYear"></span> Renante G. Morales Jr. — Built with HTML, CSS &amp; JavaScript.</span>
   </div>
+</footer>
 
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="js/custom.js"></script>
+<script>
+  document.getElementById('displayYear').textContent = new Date().getFullYear();
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 </body>
-
 </html>
